@@ -1,0 +1,13 @@
+import cv2
+img=cv2.imread('deer.webp',1)
+B,G,R=cv2.split(img)
+cv2.imshow('blue saturation image',B)
+cv2.imwrite('bluedeer.png',B)
+cv2.waitKey(0)
+cv2.imshow('green saturation image',G)
+cv2.imwrite('greendeer.png',G)
+cv2.waitKey(0)
+cv2.imshow('red saturation image',R)
+cv2.imwrite('reddeer.png',R)
+cv2.waitKey(0)
+cv2.destroyAllWindows()

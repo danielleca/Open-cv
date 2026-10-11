@@ -15,9 +15,9 @@ fps = capture_video.get(cv2.CAP_PROP_FPS)
 if fps == 0:
     fps = 30
 
-fourcc = cv2.VideoWriter_fourcc(*"XVID")
+fourcc = cv2.VideoWriter_fourcc(*"mp4v")
 out = cv2.VideoWriter(
-    "invisible_Cloak_output.avi",
+    "invisible_Cloak_output.mp4",
     fourcc,
     fps,
     (width, height)
@@ -40,7 +40,7 @@ while capture_video.isOpened():
     frame_count += 1
     img = np.flip(img, axis = 1)
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-    lower_red1 = np.array([00, 120, 70])
+    lower_red1 = np.array([0, 120, 70])
     upper_red1 = np.array([10, 255, 255])
     mask1 = cv2.inRange(hsv, lower_red1, upper_red1)
     lower_red2 = np.array([160, 120, 70])
@@ -59,9 +59,8 @@ while capture_video.isOpened():
     key = cv2.waitKey(delay) & 0xFF
     if key == 27:
         break
-    #if cv2.getWindowProperty("Invisible Cloack - Red Towel", cv2.WND_PROP_VISIBLE) < 1:
-        #break
-    capture_video.release()
-    out.release()
-    cv2.destroyAllWindows()
-    print("Video saved as: Invisible_Cloak_Output.avi")
+  
+capture_video.release()
+out.release()
+cv2.destroyAllWindows()
+print("Video saved as: Invisible_Cloak_Output.mp4")
